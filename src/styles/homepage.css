@@ -1,0 +1,118 @@
+    .button {
+        padding: .6rem 1.5rem;
+        border-radius: 5px;
+        font-size: 1.2rem;
+        border: none;
+        cursor: pointer;
+        background-color: #ED7D31;
+        color: #fff;
+    }
+  
+  .homepage {
+    max-width: 1500px;
+    margin: 0 auto;
+    padding-inline: 1rem;
+    padding-top: 2rem;
+    background: rgb(39,25,42);
+    background: linear-gradient(27deg, rgba(39,25,42,1) 0%, rgba(39,36,39,1) 43%, rgba(125,126,116,1) 100%);
+    background-size: cover;
+    height: 70vh;
+}
+.home-text {
+    padding-top: 10rem;
+    background: none;
+}
+.home-logo, .home-content, .home-content h4, .home-logo img{
+    background: none;
+}
+.home-text {
+    color: #fff;
+}
+.home-content h4 {
+    color: #fff;
+    text-align: center;
+}
+.home-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+.home-content h4 {
+    font-size: 2rem;
+    padding-inline: .5rem;
+}
+
+
+/* team style context */
+.team {
+    height: auto;
+    padding-block: 2rem;
+    width: auto;
+}
+.team-title{
+    padding-block: 2rem;
+    max-width: 1050px;
+    margin: 0 auto;
+    text-align: center;
+    color: #111;
+}
+.team-title h1 {
+    font-size: 2rem;
+}
+.team-content .card img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.team-content {
+    max-width: 1050px;
+    margin: 0 auto;
+    padding-block: 2rem;
+    display: grid;
+    place-content: center;
+    gap: 2rem;
+    padding-inline: 1rem;
+}
+.card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+.card-text {
+    max-width: 50%;
+}
+
+@media(max-width:900px){
+    .card{
+        display: grid;
+        place-content: center;
+        gap: 1rem;
+        padding-inline: 1.5rem;
+        text-align: center;
+    }
+    .card-text {
+        max-width: 100%;
+    }
+    .team-content {
+        padding-top: 3rem;
+    }
+    .reverse{
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+}
+
+
+
+
+@media(max-width:400px){
+    .home-content h4 {
+        font-size: 1.5rem;
+    }
+}
