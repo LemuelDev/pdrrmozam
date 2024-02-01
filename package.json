@@ -1,5 +1,5 @@
 {
-  "homepage": "https://LemuelDev.github.io/sample101",
+  "homepage": "https://lemueldev.github.io/sample101/",
   "name": "pdrrmo",
   "private": true,
   "version": "0.0.0",
@@ -13,6 +13,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "aos": "^3.0.0-beta.6",
     "react": "^18.2.0",
     "react-axios": "^2.0.6",
     "react-dom": "^18.2.0",
