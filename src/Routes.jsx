@@ -7,7 +7,7 @@ import Announcements from "./sections/Announcements";
 const AppRoutes = () => {
     return (
         <Routes>
-            <Route path="/" element={<Homepage/>} />
+            <Route path="/" element={<Homepage/>} exact/>
             <Route path="/events" element={<Events/>} />
             <Route path="/weather" element={<Weather/>} />
             <Route path="/team" element={<Announcements/>} />
