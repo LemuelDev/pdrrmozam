@@ -1,80 +1,196 @@
 import '../styles/homepage.css'
-
-import Logo from '../assets/pddrmo_prof.jpg'
+// import Logo from '../assets/pddrmo_prof.jpg'
 import FootLogo from '../assets/pddrmo_prof.jpg'
 import Typhoon from '../assets/typhoon.jpg'
 import Advisory from '../assets/advisory.jpg'
 import Thunderstorm from '../assets/thunderstorm.jpg'
 import Drill from '../assets/earthquake_drill.jpg'
+import { HomeSliderText } from '../context/data'
+import { useState, useEffect } from 'react'
 const Homepage = () => {
+
+    const [philippinesTime, setPhilippinesTime] = useState('');
+
+    const updateClock = () => {
+      // Get the current time in the Philippines (GMT+8)
+      const currentTime = new Date().toLocaleString("en-US", { timeZone: "Asia/Manila" });
+      setPhilippinesTime(currentTime);
+    };
+  
+    useEffect(() => {
+      // Update the clock every second
+      const intervalId = setInterval(updateClock, 1000);
+  
+      // Clean up the interval when the component unmounts
+      return () => clearInterval(intervalId);
+  
+    }, []); // Run this effect only once on component mount
+
+
+    
+  const [weatherData, setWeatherData] = useState([])
+  const [selectedMunicipality, setSelectedMunicipality] = useState(null)
+
+  useEffect(() => {
+    const municipalities = ["Sta. Cruz", "Candelaria", "Masinloc", "Palauig", "Iba", "Botolan",
+     "Cabangan", "San Felipe", "San Antonio" , "San Narciso", "San Marcelino" , "Castillejos", "Subic"]; // Add the names of the 13 municipalities
+    const apiKey = 'b60534d6e4d4367cdc8ea944c5992f88';
+
+    const fetchWeatherData = async () => {
+      try {
+        const promises = municipalities.map(async (municipality) => {
+          const response = await fetch(
+            `https://api.openweathermap.org/data/2.5/weather?q=${municipality},Zambales&appid=${apiKey}`
+          );
+          const data = await response.json();
+          return { municipality, data };
+        });
+
+        const results = await Promise.all(promises);
+        setWeatherData(results);
+      } catch (error) {
+        console.error('Error fetching weather data:', error);
+      }
+    };
+
+    fetchWeatherData();
+  }, []);
+
+
+  const handleMunicipality = (municipality) => {
+    console.log('Clicked on', municipality);
+    setSelectedMunicipality(municipality)
+  }
+
+  const handleCloseModal = () => {
+    setSelectedMunicipality(null)
+  }
+
+  // const handleWeather = (e) => {
+  //   if (e == 'Clear') {
+  //     setCurrentWeather('https://lottie.host/embed/2d296409-33d5-4ce0-a6a5-ce40b58076be/7P6yFM3SY2.json');
+  //   }else if (e == 'Cloud'){
+  //     setCurrentWeather('https://lottie.host/embed/362d9292-6827-4f05-8405-feeaaec834b8/EQYEwb2Fz2.json');
+  //   }
+  // }
+
+
+
   return (
     <section>
 
       {/* homepage */}
-        <section className="homepage">
-                <div className="home-text" data-aos="fade-up" data-aos-duration="2500">
-                  <div className="home-content">
-                    <h4>
-                        PROVINCIAL DISASTER RISK <br />REDUCTION AND MANAGEMENT OFFICE
-                    </h4>
-                    <a href="#event-content" className="button">Explore More</a>
-                  </div>
-                </div>
-        </section>
-
+      <section className="homepage">
+      <section className="image-slider-homepage">
+        <div className="slider-container">
+          <div className="slider">
+            <div className="slide"><div className="overlay"></div><img src={Typhoon} alt="Slide 1" /></div>
+            <div className="slide"><div className="overlay"></div><img src={Thunderstorm} alt="Slide 2" /></div>
+            <div className="slide"><div className="overlay"></div><img src={Drill} alt="Slide 3" /></div>
+            <div className="slide"><div className="overlay"></div><img src={Advisory} alt="Slide 4" /></div>
+          </div>
+        </div>
+      </section>
+      <div className="home-text">
+        <div className="home-content">
+          <h4>
+            PROVINCIAL DISASTER RISK <br />REDUCTION AND MANAGEMENT OFFICE
+          </h4>
+          <a href="#" className="button">
+            Explore More
+          </a>
+        </div>
+      </div>
+    </section>
       
+       
 
-            <section className="announce-announce" data-aos="fade-up" data-aos-duration="2000" id='event-content'>
-                        <div className="announce-title">
-                            <h4>Announcements</h4>
+        <section className='timezone'>
+      <div className="time">
+        <p>{`Philippines Time: ${philippinesTime}`}</p>
+      </div>
+      <div className="text-slider-container">
+        <div className="text-slider">
+          {HomeSliderText.map((text, index) => (
+            <p key={index} className="text-slide">&quot; {text} &quot;</p>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    
+      <section className="weather-map">
+        <div className="weather-map-content">
+
+            <div>
+              <h4>Live Weather Forecast</h4>
+            <iframe width="700" height="750" src="https://embed.windy.com/embed.html?type=map&location=coordinates&metricRain=default&metricTemp=default&metricWind=default&zoom=4&overlay=wind&product=ecmwf&level=surface&lat=6.577&lon=121.729&detailLat=14.363&detailLon=121.729&detail=true&pressure=true" ></iframe>
+            </div>
+
+          <div>   
+        <section className='weather-zambales' id='weather-content'>
+              <div className="weather-temp-title">
+                  <h4>Municipalities</h4>
+              </div>
+          <div className='weather-temp'  data-aos="fade-up" data-aos-duration="1000">
+           
+            {weatherData.map(({ municipality, data }) => {
+
+                const weatherCondition = data.weather[0].main;
+
+                let weatherSVG;
+                if (weatherCondition === 'Clear') {
+                  weatherSVG = <iframe src="https://lottie.host/embed/2d296409-33d5-4ce0-a6a5-ce40b58076be/7P6yFM3SY2.json"></iframe>
+                } else if (weatherCondition === 'Clouds') {
+                  weatherSVG = <iframe src="https://lottie.host/embed/7a073eba-dd38-4a86-82ac-8cacea1ef929/FblJ7HjYcr.json"></iframe>
+                } else if (weatherCondition === 'Rain') {
+                  weatherSVG = <iframe src="https://lottie.host/embed/d1c136f1-e022-419e-bda4-3252c71e4b7e/4l1jCouqku.json"></iframe>
+                } else {
+                  // Default SVG or handling for other weather conditions
+                  weatherSVG = <iframe src="https://lottie.host/embed/a895bf6b-d48f-4061-876c-04e33c1e5fa5/2R3dgBd9Sl.json"></iframe>
+                }
+              return (
+                    <div key={municipality}  
+                    className="weather-card" 
+                    onClick={() => handleMunicipality(municipality)} >
+                      <h2>{municipality}</h2>
+                      {weatherSVG}
+                    </div>
+                )
+            })}
+          </div>
+
+                {/* modal */}
+                {selectedMunicipality && (
+                    <div className="modal-wrapper">
+                        <div className="modal">
+                              <h3>{selectedMunicipality}</h3>
+                              <p>Temperature: {(weatherData.find(({ municipality }) => municipality === selectedMunicipality).data.main.temp - 272.15).toFixed(2)}°C</p>
+                              <p>Weather: {weatherData.find(({ municipality }) => municipality === selectedMunicipality).data.weather[0].main}</p>
+                              <p>Humidity: {weatherData.find(({ municipality }) => municipality === selectedMunicipality).data.main.humidity}%</p>
+                              <button onClick={handleCloseModal}>Close</button>
                         </div>
-                        <div className="event-card-content" data-aos="fade-up" data-aos-duration="2000">
-                            <div className="image-card">
-                                <img src={Typhoon} alt="" />
-                            </div>
-                            <div className="event-text-card" data-aos="fade-up" data-aos-duration="2000">
-                                <p>🌊⚠️ Beach Hazard Alert! <br></br>
-                                Typhoon Egay has stirred up dangerous waves and strong currents along the coast. Stay safe and REFRAIN from swimming in coastal areas until the storm subsides. Your safety is our priority! 🚫🏊‍♂️ #typhoonEgay #BeachSafety #stayalert</p>
-                            </div>
-                        </div>
-                        <div className="event-card-content-reverse" data-aos="fade-up" data-aos-duration="2000">
-                            <div className="image-card">
-                                <img src={Advisory} alt="" />
-                            </div>
-                            <div className="event-text-card">
-                                <p>Earthquake Information No.1
-                                    Date and Time: 22 November 2023 - 09:22 PM
-                                    Magnitude = 2.0
-                                    Depth = 029 km
-                                    Location = 15.14°N, 119.88°E - 019 km S 82° W of Cabangan Zambales</p>
-                            </div>
-                        </div>
-                        <div className="event-card-content" data-aos="fade-up" data-aos-duration="2000">
-                            <div className="image-card">
-                                <img src={Drill} alt="" />
-                            </div>
-                            <div className="event-text-card" data-aos="fade-up" data-aos-duration="2000">
-                                <p>4TH QUARTER NATIONWIDE SIMULTANEOUS EARTHQUAKE DRILL 2023
-                                On 09 November 2023, the Zambales Provincial Disaster Risk Reduction and Management Office, together with the MDRRMO, BFP, and Municipal Police Station of Cabangan spearheaded the conduct of the 4th Quarter Simultaneous Earthquake Drill (NSED) at Immaculate Conception Academy in Cabangan, Zambales.
-                                </p>
-                            </div>
-                        </div>
-                        <div className="event-card-content-reverse" data-aos="fade-up" data-aos-duration="2000">
-                            <div className="image-card">
-                                <img src={Thunderstorm} alt="" />
-                            </div>
-                            <div className="event-text-card">
-                                <p>Thunderstorm Advisory No. 2 NCR_PRSD
-                                Issued at: 12:35 PM, 27 October 2023(Friday)
-                                Moderate to Heavy rainshowers with lightning and strong winds are being experienced in #Zambales(Santa Cruz, Candelaria, Masinloc, Palauig, Iba, Botolan) which may persist within 2 hours and may affect nearby areas.
-                                All are advised to take precautionary measures against the impacts associated with these hazards which include flash floods and landslides.
-                                Keep monitoring for updates.</p>
-                            </div>
-                        </div>
-            </section>
+                    </div>
+                )}
+          </section>
+          
+          </div>
+        </div>
+      </section>
+
+      <section className="news-events">
+        <div className="news-events-title">
+            <h4>NEWS & EVENTS</h4>
+        </div>
+      </section>
+
+    
 
 
-        <section className="profile">
+
+
+        
+        {/* <section className="profile">
             <div className="prof-content" data-aos="fade-up" data-aos-duration="2000">
                 <div className="left-content">
                       <img src={Logo} alt="" />
@@ -84,7 +200,7 @@ const Homepage = () => {
                     <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cupiditate nesciunt perferendis at aliquam! Assumenda, quos incidunt. Magnam corporis dolore doloribus dolores ex, iusto ratione autem id illum! Dolore, ullam harum.</p>
                 </div>
             </div>
-        </section>
+        </section> */}
 
         <section className='attach'>
             <div className="attach-title" data-aos="fade-up" data-aos-duration="2000">
@@ -93,7 +209,7 @@ const Homepage = () => {
             <div className="attach-content">
                 <p>Coming Soon...</p>
             </div>
-        </section>
+        </section> *
 
         <section className="footer">
             <div className="footer-content">
@@ -117,7 +233,7 @@ const Homepage = () => {
             </div>
 
             <hr />
-            <p className="last-text">All rights reserved@2023</p>
+            <p className="last-text">Powered by: CloudBeta IT Solutions</p>
         </section>
 
 

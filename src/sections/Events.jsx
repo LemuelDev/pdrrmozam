@@ -15,7 +15,7 @@ const Events = () => {
                 </div>
         </section>
 
-        <section className="event-cards" id='event-content' >
+        {/* <section className="event-cards" id='event-content' >
             <div className="title-event" data-aos="fade-up" data-aos-duration="2000">
                 <h4>Upcoming Events</h4>
             </div>
@@ -57,7 +57,7 @@ const Events = () => {
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum obcaecati, perspiciatis sint, fugiat corporis quisquam cupiditate debitis voluptatem aspernatur nihil neque, distinctio maiores eos? Aperiam eos porro tempore a saepe?</p>
                     </div>
             </div>
-        </section>
+        </section> */}
 
         {/* footer section */}
         <section className="footer">

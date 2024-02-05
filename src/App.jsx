@@ -1,7 +1,7 @@
 import './App.css'
 import AppRoutes from './Routes'
 import Navbar from './sections/Navbar'
-import { BrowserRouter as Router } from 'react-router-dom'
+import { HashRouter as Router } from 'react-router-dom'
 function App() {
 
   return (

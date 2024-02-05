@@ -12,7 +12,7 @@ const Navbar = () => {
   return (
     <header>
         <div className="content" >
-            <div className="logo" data-aos="fade-up" data-aos-duration="2000">
+            <div className="logo">
                 <Link to="/" className="link-logo">
                 <img src={GovLogo} alt="govlogo" width={50} height={50}/>
                 <h3>PDRRMO ZAMBALES</h3>
@@ -27,16 +27,19 @@ const Navbar = () => {
                 <div className="close">
                   <HiXMark onClick={() => setIsClick(false)} className="icon"/>
                 </div>
-               
-                <Link to="/events" className="link"  data-aos="fade-up" data-aos-duration="2000">
-                  Events
+                <Link to="/team" className="link"  >
+                  Services
                 </Link>
-                <Link to="/weather" className="link"  data-aos="fade-up" data-aos-duration="2000">
-                  Weather
+                <Link to="/events" className="link" >
+                  About Us
                 </Link>
-                <Link to="/team" className="link"  data-aos="fade-up" data-aos-duration="2000" >
-                  Team
+                <Link to="/weather" className="link" >
+                  Support
                 </Link>
+                <Link to="/team" className="link"  >
+                  Risk Profiles
+                </Link>
+                
             </nav>
         </div>
     </header>

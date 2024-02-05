@@ -48,7 +48,7 @@
 .title-event h4 {
     font-size: 2rem;
 }
-.event-card-content, .program-card-content {
+ /* .event-card-content, .program-card-content {
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -56,9 +56,6 @@
     max-width: 800px;
     margin: 0 auto;
     padding-top: 5rem;
-    /* box-shadow: 6px 24px 58px 3px rgba(203,203,203,0.89);
-    -webkit-box-shadow: 6px 24px 58px 3px rgba(203,203,203,0.89);
-    -moz-box-shadow: 6px 24px 58px 3px rgba(203,203,203,0.89); */
     background-color: transparent;
 }
 .event-text-card {
@@ -91,15 +88,12 @@
     max-width: 900px;
     margin: 0 auto;
     padding-block: 3rem;
-    /* box-shadow: 6px 24px 58px 3px rgba(203,203,203,0.89);
-    -webkit-box-shadow: 6px 24px 58px 3px rgba(203,203,203,0.89);
-    -moz-box-shadow: 6px 24px 58px 3px rgba(203,203,203,0.89); */
     background-color: transparent;
    
 }
 .event-card-content-reverse .event-text-card, .program-card-content-reverse .event-text-card {
     text-align: right;
-}
+} 
 
 @media(max-width:900px) {
     .event-card-content, .program-card-content{
@@ -118,7 +112,7 @@
         padding-inline: 1rem;
         padding-top: 1rem;
     }
-}
+}  */
 
 
 
