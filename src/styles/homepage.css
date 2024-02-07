@@ -356,7 +356,9 @@
     align-items: center;
     padding: 20px;
     flex-direction: column;
-  }
+}
+
+
   
   .time {
     font-size: 18px;
