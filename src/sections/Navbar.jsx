@@ -27,16 +27,16 @@ const Navbar = () => {
                 <div className="close">
                   <HiXMark onClick={() => setIsClick(false)} className="icon"/>
                 </div>
-                <Link to="/team" className="link"  >
+                <Link to="/services" className="link"  >
                   Services
                 </Link>
-                <Link to="/events" className="link" >
+                <Link to="/about" className="link" >
                   About Us
                 </Link>
-                <Link to="/weather" className="link" >
+                <Link to="/support" className="link" >
                   Support
                 </Link>
-                <Link to="/team" className="link"  >
+                <Link to="/risk-profiles" className="link"  >
                   Risk Profiles
                 </Link>
                 

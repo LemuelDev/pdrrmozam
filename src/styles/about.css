@@ -1,0 +1,196 @@
+.about {
+    max-width: 1500px;
+    margin: 0 auto;
+    height: auto;
+}
+.about-home {
+    height: 60vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../assets/pddrmo_cover.png) no-repeat center center;
+    background-size: cover;
+}
+.about-home-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 11rem;
+    text-align: center;
+    max-width: 300px;
+    margin: 0 auto;
+    background-color: transparent;
+}
+.about-home-content h4 {
+    font-size: 2.5rem;
+    background-color: transparent;
+    color: #fff;
+}
+
+.about-first, .mission {
+    padding-block: 3rem;
+    height: auto;
+}
+.about-first-content {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+}
+.about-first-content .image-side img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    display: flex;
+    align-self: flex-start;
+    justify-content: flex-start;
+}
+.right-text-side {
+    max-width: 50%;
+    font-size: 1.1rem;
+    text-align: start;
+}
+.right-text-side h4 {
+    font-size: 1.5rem;
+    padding-bottom: .5rem;
+}
+
+/* mission css */
+
+.mission-title {
+    max-width: 1150px;
+    margin: 0 auto;
+    padding-block: 1rem;
+}
+.mission-title h4 {
+    font-size: 2rem;
+    text-align: center;
+}
+.mission-content {
+    display: grid;
+    place-content: center;
+    gap: 1.5rem;
+    padding-top: 3rem;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding-inline: 1rem;
+}
+.mission-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding:40px 20px;
+    border-radius: 15px;
+    box-shadow: 10px 10px 41px -13px rgba(0,0,0,0.43);
+    -webkit-box-shadow: 10px 10px 41px -13px rgba(0,0,0,0.43);
+    -moz-box-shadow: 10px 10px 41px -13px rgba(0,0,0,0.43);;
+}
+.card-right {
+    max-width: 60%;
+}
+.card-left {
+    min-width: 40%;
+    text-align: center;
+}
+.card-left h4 {
+    font-size: 1.5rem;
+    font-style: italic;
+}
+
+
+@media (max-width:900px) {
+    .mission-card {
+        display: grid;
+        place-content: center;
+        padding: 20px;
+    }
+    .card-right {
+        max-width: 100%;
+        text-align: start;
+    }
+    .card-left {
+        padding-block: 3rem;
+    }
+ 
+}
+@media (max-width:800px) {
+    .about-first-content {
+        display: grid;
+        place-content: center;
+        gap: 1rem;
+    }
+    .right-text-side {
+        text-align: center;
+        max-width: 100%;
+    }
+    .image-side{
+        display: grid;
+        place-content: center;
+    }
+}
+
+
+ /* footer section */
+ .footer {
+    height: auto;
+    padding-block: 4rem;
+    padding-inline: 1rem;
+    max-width: 1500px;
+    margin: 0 auto;
+    background-color: #ec6d18;
+    color: #111;
+}
+.footer-title {
+    background: transparent;
+    max-width: 300px;
+}
+.footer-content img {
+    width: 125px;
+    height: 125px;
+    border-radius: 50%;
+}
+.footer-title h4 {
+    font-size: 1.5rem;
+    background: transparent;
+    color: #111;
+}
+.footer-content {
+    max-width: 1200px;
+    margin: auto;
+    padding-top: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    background: transparent;
+    flex-wrap: wrap;
+
+}
+.card, .card-link {
+    max-width: 300px;
+    background-color: transparent;
+}
+.card p {
+    background-color: transparent;
+    color: #111;
+}
+.card-link {
+    background: transparent;
+    display: grid;
+    place-content: center;
+    text-align: center;
+}
+
+.footer hr {
+    margin-top: 2rem;
+    background-color: transparent;
+    color:#111;
+}
+.last-text {
+    padding-top: 2rem;
+    text-align: center;
+    font-size: 1rem;
+    background-color: transparent;
+    color: #111;
+}

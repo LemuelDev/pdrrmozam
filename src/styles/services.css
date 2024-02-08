@@ -1,37 +1,48 @@
-
-.announce {
+.services {
     max-width: 1500px;
     margin: 0 auto;
-    padding-inline: 1rem;
-    padding-top: 2rem;
-    background: rgb(39,25,42);
-    background: linear-gradient(27deg, rgba(39,25,42,1) 0%, rgba(39,36,39,1) 43%, rgba(125,126,116,1) 100%);
+    height: auto;
+}
+.services-home {
+    height: 60vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../assets/pddrmo_cover.png) no-repeat center center;
     background-size: cover;
-    height: 70vh;
 }
-.announce-text {
-    padding-top: 10rem;
-    background: none;
-    /* color: #fff; */
-}
-
-.announce-content h4 {
-    color: #fff;
-    text-align: center;
-}
-.announce-content {
+.services-home-content {
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 1rem;
+    padding-top: 11rem;
+    text-align: center;
+    max-width: 300px;
+    margin: 0 auto;
     background-color: transparent;
 }
-.announce-content h4 {
-    font-size: 2rem;
-    padding-inline: .5rem;
+.services-home-content h4 {
+    font-size: 2.5rem;
     background-color: transparent;
+    color: #fff;
 }
+
+
+/* content */
+
+.research {
+    max-width: 1300px;
+    margin: 0 auto;
+    height: 50vh;
+    padding-block: 2rem;
+}
+.research-title h4 {
+    padding-block: 1.5rem;
+    font-size: 1.7rem;
+    text-align: center;
+}
+.research-content {
+    text-align: center;
+    padding-top: 4rem;
+}
+
 
 
  /* footer section */
@@ -56,6 +67,7 @@
 .footer-title h4 {
     font-size: 1.5rem;
     background: transparent;
+    color: #111;
 }
 .footer-content {
     max-width: 1200px;
@@ -75,50 +87,24 @@
 }
 .card p {
     background-color: transparent;
+    color: #111;
 }
 .card-link {
     background: transparent;
     display: grid;
     place-content: center;
-    text-align: start;
+    text-align: center;
 }
 
 .footer hr {
     margin-top: 2rem;
     background-color: transparent;
-    border: 1px solid black;
+    color:#111;
 }
 .last-text {
     padding-top: 2rem;
     text-align: center;
-    font-size: 1.2rem;
+    font-size: 1rem;
     background-color: transparent;
-    font-weight: bold;
-}
-
-.card-link a {
-    text-decoration: none;
-    background-color: transparent;
-    transition: .3s;
-}
-.card-link a:hover {
-    border-bottom: 1px solid #111;
-    transform: scale(1.1);
-}
-.card-link h4 {
-    background-color: transparent;
-    font-size: 1.3rem;
-}
-
-
-
-/* announce section */
-.announce-announce, .update-title{
-    padding-block: 2rem;
-    text-align: center;
-}
-
-.announce-title h4, .update-title h4{
-    padding-block: 2rem;
-    font-size: 2rem;
+    color: #111;
 }

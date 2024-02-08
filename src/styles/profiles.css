@@ -1,0 +1,25 @@
+.profiles {
+    max-width: 1500px;
+    margin: 0 auto;
+    height: auto;
+}
+.profiles-home {
+    height: 60vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../assets/pddrmo_cover.png) no-repeat center center;
+    background-size: cover;
+}
+.profiles-home-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 11rem;
+    text-align: center;
+    max-width: 300px;
+    margin: 0 auto;
+    background-color: transparent;
+}
+.profiles-home-content h4 {
+    font-size: 2.5rem;
+    background-color: transparent;
+    color: #fff;
+}

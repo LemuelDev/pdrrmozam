@@ -58,7 +58,6 @@ const Homepage = () => {
 
 
   const handleMunicipality = (municipality) => {
-    console.log('Clicked on', municipality);
     setSelectedMunicipality(municipality)
   }
 
@@ -66,15 +65,22 @@ const Homepage = () => {
     setSelectedMunicipality(null)
   }
 
-  // const handleWeather = (e) => {
-  //   if (e == 'Clear') {
-  //     setCurrentWeather('https://lottie.host/embed/2d296409-33d5-4ce0-a6a5-ce40b58076be/7P6yFM3SY2.json');
-  //   }else if (e == 'Cloud'){
-  //     setCurrentWeather('https://lottie.host/embed/362d9292-6827-4f05-8405-feeaaec834b8/EQYEwb2Fz2.json');
-  //   }
-  // }
+  const [currentSlide, setCurrentSlide] = useState(0);
 
+  const slides = [
+    { image: Typhoon, alt: 'Slide 1' },
+    { image: Thunderstorm, alt: 'Slide 2' },
+    { image: Drill, alt: 'Slide 3' },
+    { image: Advisory, alt: 'Slide 4' },
+  ];
 
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setCurrentSlide((prevSlide) => (prevSlide + 1) % slides.length);
+    }, 5000); // Change slide every 5 seconds (adjust as needed)
+
+    return () => clearInterval(intervalId); // Cleanup the interval on component unmount
+  }, []);
 
   return (
     <section>
@@ -83,18 +89,20 @@ const Homepage = () => {
       <section className="homepage">
       <section className="image-slider-homepage">
         <div className="slider-container">
-          <div className="slider">
-            <div className="slide"><div className="overlay"></div><img src={Typhoon} alt="Slide 1" /></div>
-            <div className="slide"><div className="overlay"></div><img src={Thunderstorm} alt="Slide 2" /></div>
-            <div className="slide"><div className="overlay"></div><img src={Drill} alt="Slide 3" /></div>
-            <div className="slide"><div className="overlay"></div><img src={Advisory} alt="Slide 4" /></div>
+          <div className="slider" style={{ transform: `translateX(-${currentSlide * 100}%)` }}>
+            {slides.map((slide, index) => (
+              <div className="slide" key={index}>
+                <div className="overlay"></div>
+                <img src={slide.image} alt={slide.alt} />
+              </div>
+            ))}
           </div>
         </div>
       </section>
       <div className="home-text">
         <div className="home-content">
           <h4>
-            PROVINCIAL DISASTER RISK <br />REDUCTION AND MANAGEMENT OFFICE
+            PROVINCIAL DISASTER RISK <br /> REDUCTION AND MANAGEMENT OFFICE
           </h4>
           <a href="#" className="button">
             Explore More
@@ -102,7 +110,6 @@ const Homepage = () => {
         </div>
       </div>
     </section>
-      
        
 
         <section className='timezone'>
@@ -209,7 +216,7 @@ const Homepage = () => {
             <div className="attach-content">
                 <p>Coming Soon...</p>
             </div>
-        </section> *
+        </section> 
 
         <section className="footer">
             <div className="footer-content">
@@ -233,7 +240,7 @@ const Homepage = () => {
             </div>
 
             <hr />
-            <p className="last-text">Powered by: CloudBeta IT Solutions</p>
+            <p className="last-text">Powered by: ProjectBeta IT Solutions</p>
         </section>
 
 

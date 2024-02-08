@@ -8,3 +8,14 @@ export const HomeSliderText = [
     "PDRRM plans often incorporate climate change considerations, acknowledging the evolving nature of environmental risks.",
 ]
 
+export const Mission = [
+    {
+        title: "Mission",
+        content: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officia asperiores at dolores fuga, atque aliquid enim. Sapiente, ut fuga tenetur iste assumenda quis architecto quo expedita quidem esse! Harum, eius. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officia asperiores at dolores fuga, atque aliquid enim. Sapiente, ut fuga tenetur iste assumenda quis architecto quo expedita quidem esse! Harum, eius."
+    },
+    {
+        title: "Vision",
+        content: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officia asperiores at dolores fuga, atque aliquid enim. Sapiente, ut fuga tenetur iste assumenda quis architecto quo expedita quidem esse! Harum, eius. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officia asperiores at dolores fuga, atque aliquid enim. Sapiente, ut fuga tenetur iste assumenda quis architecto quo expedita quidem esse! Harum, eius."
+    }
+]
+
