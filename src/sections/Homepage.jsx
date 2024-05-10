@@ -16,7 +16,7 @@ const Homepage = () => {
       const currentTime = new Date().toLocaleString("en-US", { timeZone: "Asia/Manila" });
       setPhilippinesTime(currentTime);
     };
-  
+   
     useEffect(() => {
       // Update the clock every second
       const intervalId = setInterval(updateClock, 1000);
@@ -51,9 +51,12 @@ const Homepage = () => {
       } catch (error) {
         console.error('Error fetching weather data:', error);
       }
-    };
 
+
+    };
+    console.log(weatherData)
     fetchWeatherData();
+
   }, []);
 
 
@@ -81,6 +84,26 @@ const Homepage = () => {
 
     return () => clearInterval(intervalId); // Cleanup the interval on component unmount
   }, []);
+
+  const [data, setData] = useState([]);
+  const [errorData, setErrorData] = useState('');
+
+  useEffect(() => {
+      fetchData();
+  }, []);
+
+  const fetchData = async () => {
+      try {
+          const response = await fetch('http://127.0.0.1:8000/api/files');
+          const jsonData = await response.json();
+
+          // Assuming the response is in array format, set data
+          setData(jsonData);
+      } catch (error) {
+          console.error('Error fetching data:', error);
+          setErrorData('Error loading data...');
+      }
+  };
 
   return (
     <section>
@@ -131,7 +154,7 @@ const Homepage = () => {
 
             <div>
               <h4>Live Weather Forecast</h4>
-            <iframe width="700" height="750" src="https://embed.windy.com/embed.html?type=map&location=coordinates&metricRain=default&metricTemp=default&metricWind=default&zoom=4&overlay=wind&product=ecmwf&level=surface&lat=6.577&lon=121.729&detailLat=14.363&detailLon=121.729&detail=true&pressure=true" ></iframe>
+              <iframe width="650" height="450" src="https://embed.windy.com/embed.html?type=map&location=coordinates&metricRain=default&metricTemp=default&metricWind=default&zoom=5&overlay=wind&product=ecmwf&level=surface&lat=15.842&lon=122.205&detailLat=15.326341251046408&detailLon=119.98928817441453&marker=true"></iframe>
             </div>
 
           <div>   
@@ -172,7 +195,7 @@ const Homepage = () => {
                     <div className="modal-wrapper">
                         <div className="modal">
                               <h3>{selectedMunicipality}</h3>
-                              <p>Temperature: {(weatherData.find(({ municipality }) => municipality === selectedMunicipality).data.main.temp - 272.15).toFixed(2)}°C</p>
+                              <p>Temperature: {(weatherData.find(({ municipality }) => municipality === selectedMunicipality).data.main.feels_like - 273.15).toFixed(2)}°C</p>
                               <p>Weather: {weatherData.find(({ municipality }) => municipality === selectedMunicipality).data.weather[0].main}</p>
                               <p>Humidity: {weatherData.find(({ municipality }) => municipality === selectedMunicipality).data.main.humidity}%</p>
                               <button onClick={handleCloseModal}>Close</button>
@@ -191,33 +214,28 @@ const Homepage = () => {
         </div>
       </section>
 
-    
-
-
-
-
-        
-        {/* <section className="profile">
-            <div className="prof-content" data-aos="fade-up" data-aos-duration="2000">
-                <div className="left-content">
-                      <img src={Logo} alt="" />
-                </div>
-                <div className="right-content">
-                    <h1>PDRRMO ZAMBALES</h1>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cupiditate nesciunt perferendis at aliquam! Assumenda, quos incidunt. Magnam corporis dolore doloribus dolores ex, iusto ratione autem id illum! Dolore, ullam harum.</p>
-                </div>
-            </div>
-        </section> */}
-
-        <section className='attach'>
-            <div className="attach-title" data-aos="fade-up" data-aos-duration="2000">
-                <h4>Attachments & Situational Reports</h4>
-            </div>
-            <div className="attach-content">
-                <p>Coming Soon...</p>
-            </div>
-        </section> 
-
+  
+      <section className='attach'>
+          <div className="attach-title" data-aos="fade-up" data-aos-duration="2000">
+            <h4>Attachments & Situational Reports</h4>
+          </div>
+          <div className="attach-content">
+            {errorData ? (
+              <div>Error: {errorData}</div>
+            ) : data.length > 0 ? (
+              <ul>
+                {data.map((item) => (
+                  <li key={item.id}>
+                    <a href={'http://127.0.0.1:8000/storage/' + item.path}>{item.filename}</a>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <div>No currently public attachments.</div>
+            )}
+          </div>
+        </section>
+     
         <section className="footer">
             <div className="footer-content">
 

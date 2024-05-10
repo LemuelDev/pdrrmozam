@@ -211,8 +211,8 @@
  /* attachment section */
 
 .attach {
-    height: 70vh;
-    padding-block: 1rem;
+    height: auto;
+    padding-block: 3rem;
     padding-inline: 1rem;
     max-width: 1500px;
     margin: 0 auto;
@@ -228,11 +228,22 @@
 }
 .attach-content {
     text-align: center;
-    padding-top: 8rem;
+    padding-top: 2rem;
+
 }
 .attach-content  {
     font-size: 1.5rem;
  }
+
+ .attach-content ul {
+    display: grid;
+    gap: 1rem;
+}
+
+
+.attach-content ul li {
+    list-style: none;
+}
 
  /* footer section */
 .footer {
@@ -327,7 +338,7 @@
 /* timexzone css */
 
 .timezone {
-    max-width: 1300px;
+    max-width: 1500px;
     margin: 0 auto;
     padding-block: 1rem;
     display: grid;
@@ -346,7 +357,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px;
+    padding: 20px ;
     flex-direction: column;
 }
 
@@ -364,6 +375,7 @@
     position: relative;
     max-height: 100px;
     background-color: #ED7D31;
+    width: 100%;
   }
   
   .text-slider {
@@ -479,13 +491,13 @@
 
 
 .weather-map {
-    max-width: 1300px;
+    max-width: 1500px;
     padding: 0rem 1rem;
     margin: 0 auto;
 }
 .weather-map-content {
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: top;
     gap: 1rem;
     padding-block: 1rem;
@@ -501,7 +513,7 @@
     max-width: 100%;
 }
 .weather-map-content .weather-zambales {
-    width: 400px;
+    width: 600px;
     padding-inline: 0;
     padding-top: 0;
 }
@@ -518,7 +530,7 @@
 .weather-temp .weather-card {
     max-width: 200px;
     padding-top: 0;
-    padding: 1rem;
+    padding: 1.1rem;
     border-radius: 10px;
     height: auto;
     box-shadow: 6px 24px 58px 3px rgba(203,203,203,0.89);
@@ -527,10 +539,12 @@
     cursor: pointer;
     transition: .3s all;
     display: flex;
-    justify-content: flex-start;
+    justify-content: flex-end;
     align-items: center;
-    gap: 1rem;
+    gap: .8rem;
 }
+
+
 
 @media (max-width: 1140px) {
     .weather-map-content iframe {

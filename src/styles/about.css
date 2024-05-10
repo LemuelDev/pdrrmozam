@@ -82,9 +82,9 @@
     gap: 1rem;
     padding:40px 20px;
     border-radius: 15px;
-    box-shadow: 10px 10px 41px -13px rgba(0,0,0,0.43);
+    /* box-shadow: 10px 10px 41px -13px rgba(0,0,0,0.43);
     -webkit-box-shadow: 10px 10px 41px -13px rgba(0,0,0,0.43);
-    -moz-box-shadow: 10px 10px 41px -13px rgba(0,0,0,0.43);;
+    -moz-box-shadow: 10px 10px 41px -13px rgba(0,0,0,0.43);; */
 }
 .card-right {
     max-width: 60%;
